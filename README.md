@@ -32,3 +32,19 @@ for i in train_dataset:
     print('label: ', i[1]) # Output is a numpy array of size [] -> just a number
     break
 ```
+
+### Methods (./methods/)
+- each file in this folder is a class of a ML method
+- each method must include **fit** and **eval** functions
+- input of **fit** and **eval** is the dataset in the previous part
+
+### Examples (./examples/)
+- each file in this folder is a script that performs training and evaluating
+
+To run, consider the following example:
+
+```bash
+git clone https://github.com/phuvinhnguyen/UU-SML-Project.git
+cd UU-SML-Project
+python -m examples.train_XGBoost
+```
