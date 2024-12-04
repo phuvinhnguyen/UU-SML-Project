@@ -1,7 +1,8 @@
 from sklearn.neighbors import KNeighborsClassifier
 import numpy as np
+from .abstract import AbstractClass
 
-class KNN_classification:
+class KNN_classification(AbstractClass):
     def __init__(self, n_neighbors=3, weights='uniform', algorithm='auto'):
         """
         Initializes the KNN classifier with given hyperparameters.
@@ -28,20 +29,6 @@ class KNN_classification:
         - Predicted class labels.
         """
         return self.knn.predict(input)
-    
-    def eval(self, dataset):
-        """
-        Evaluates the model using accuracy on the given dataset.
-        
-        Parameters:
-        - dataset: List of tuples [(input1, output1), (input2, output2), ...].
-        
-        Returns:
-        - Accuracy score of the model.
-        """
-        input = np.array([i[0] for i in dataset])
-        output = np.array([i[1] for i in dataset])
-        return self.knn.score(input, output)
     
     def fit(self, dataset):
         """

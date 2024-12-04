@@ -1,7 +1,8 @@
 import xgboost as xgb
 import numpy as np
+from .abstract import AbstractClass
 
-class XGBoost_regresion:
+class XGBoost_regresion(AbstractClass):
     def __init__(self,
                  objective='reg:squarederror',
                  eval_metric='rmse',
@@ -9,7 +10,7 @@ class XGBoost_regresion:
                  max_depth=5,
                  learning_rate=0.1
                  ):
-        self.xgb = xgb.XGBRegressor(
+        self.xgb = xgb.XGBClassifier(
             objective=objective,
             eval_metric=eval_metric,
             n_estimators=n_estimators,
@@ -19,11 +20,6 @@ class XGBoost_regresion:
 
     def predict(self, input):
         return self.xgb.predict(input)
-    
-    def eval(self, dataset):
-        input = np.array([i[0] for i in dataset])
-        output = np.array([i[1] for i in dataset])
-        return self.xgb.score(input, output)
     
     def fit(self, dataset):
         self.xgb.fit(

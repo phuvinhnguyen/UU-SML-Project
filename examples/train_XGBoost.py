@@ -7,5 +7,7 @@ if __name__ == '__main__':
     xgb = XGBoost_regresion()
     xgb.fit(dataset)
 
-    print('Score on training data:', xgb.eval(dataset))
-    print('Score on validation data:', xgb.eval(eval_dataset))
+    print('Score on training data:')
+    xgb.eval(dataset)
+    print('Score on validation data:')
+    xgb.eval(eval_dataset)
