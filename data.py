@@ -65,10 +65,12 @@ class BikeDemandDataset_v01(Dataset):
         # Separate input features and labels
         self.features = data.drop(columns=['increase_stock'])
         self.features = pd.get_dummies(self.features, columns=["hour_of_day", "day_of_week", "month"])
+        
         self.features['temp_cold'] = self.features['temp'] < 5
         self.features['dew_low'] = self.features['dew'] < -10
         self.features['precip_0'] = self.features['precip'] == 0
         self.features['snowdepth_0'] = self.features['snowdepth'] == 0
+
         self.features = self.features.astype(float)
         self.labels = data['increase_stock']
 
